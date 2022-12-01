@@ -64,6 +64,7 @@ buttonMidElement.addEventListener('click', function(){
 
 buttonHardElement.addEventListener('click', function(){
     gridElement.innerHTML = "";
+    asideElement.innerHTML="";
     let pointCounter = 0;
     const counterElement = getNewElement(asideElement,'p')
     let gameOver = false;
@@ -86,11 +87,18 @@ buttonHardElement.addEventListener('click', function(){
             if (bombList.includes(index)) {
                 alert('You Lose!')
                 gameOver = true;
+                newSquare.classList.add('active-lose');
             }
             
             if (!gameOver){
-                counterElement.innerHTML= pointCounter++;
+                pointCounter++;
+                counterElement.innerHTML= pointCounter;
+                if (pointCounter == 100 - bombList.length) {
+                    alert('You Lose!');
+                    gameOver = true;
+                }
             }
+
         })
     }
 })

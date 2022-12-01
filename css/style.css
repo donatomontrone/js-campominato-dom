@@ -43,3 +43,7 @@ div.square-hard{
 div.active{
     background-color: #0D6EFD;
 }
+
+div.active-lose{
+    background-color: darkred;
+}
