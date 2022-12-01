@@ -2,13 +2,21 @@ header img{
     width: 60px;
 }
 
+button.btn-color{
+    background-color: #01E265;
+}
 header h1{
     color: #001433;
     margin-top: 10px;
 }
 
+aside{
+    height: 56px;
+}
+
 main{
-    background-color: aquamarine;
+    background-color: grey;
+    padding-top: 20px;
     height: calc(100vh - 142px);
     overflow: auto;
 }
@@ -19,21 +27,8 @@ div.grid{
     margin: auto;
 }
 
-div.square-easy{
-    width: calc(100% / 7);
-    height: calc(100% / 7);
-    border: 1px solid black;
-    cursor: crosshair;
-}
 
-div.square-normal{
-    width: calc(100% / 8);
-    height: calc(100% / 8);
-    border: 1px solid black;
-    cursor: crosshair;
-}
-
-div.square-hard{
+div.square{
     width: calc(100% / 10);
     height: calc(100% / 10);
     border: 1px solid black;
@@ -41,9 +36,13 @@ div.square-hard{
 }
 
 div.active{
-    background-color: #0D6EFD;
+    background-color: rgb(66, 66, 66);
 }
 
-div.active-lose{
+div.lose{
+    background-image: url(https://cdn-icons-png.flaticon.com/512/112/112683.png);
+    background-position: center;
     background-color: darkred;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
