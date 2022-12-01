@@ -5,7 +5,7 @@
 // todo Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 // todo La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 // todo Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
-// ?Consigli del giorno: :party_wizard:
+// ?Consigli del giorno:
 // ?Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi. Ad esempio: Di cosa ho bisogno per generare i numeri?
 // ?Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 // ?Le validazioni e i controlli possiamo farli anche in un secondo momento.
@@ -40,6 +40,7 @@ function getRandomNumber(numMin, numMax) {
 //===============================================================//
 
 const mainElement = document.querySelector('main');
+const asideElement = document.querySelector('aside');
 const buttonEasyElement = document.querySelector('button.btn-success');
 const buttonMidElement = document.querySelector('button.btn-warning');
 const buttonHardElement = document.querySelector('button.btn-danger');
@@ -63,18 +64,35 @@ buttonMidElement.addEventListener('click', function(){
 
 buttonHardElement.addEventListener('click', function(){
     gridElement.innerHTML = "";
-    for (let index = 1; index <= 100; index++) {
-        let squareElement = getNewSquareElement(index, 'square-hard');
-    }
+    let pointCounter = 0;
+    const counterElement = getNewElement(asideElement,'p')
+    let gameOver = false;
     const bombList = [];
     while (bombList.length < 16) {
-    //Il numero generato è l'indice da cui prendere il numero dal primo array.
         let randomicNumber = getRandomNumber(1, 100);
         if (!bombList.includes(randomicNumber)) {
             bombList.push(randomicNumber);
         }
     }
     console.warn('Le bombe sono nella posizione: ' + bombList);
+    for (let index = 1; index <= 100; index++) {
+        let newSquare = getNewElement(gridElement, 'div');
+        newSquare.classList.add('d-flex', 'square-hard');
+    
+        newSquare.addEventListener('click', function(){
+            newSquare.classList.toggle('active');
+            console.error(`Hai cliccato la cella ${index}`);
+
+            if (bombList.includes(index)) {
+                alert('You Lose!')
+                gameOver = true;
+            }
+            
+            if (!gameOver){
+                counterElement.innerHTML= pointCounter++;
+            }
+        })
+    }
 })
 
 
