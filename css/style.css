@@ -1,0 +1,45 @@
+header img{
+    width: 60px;
+}
+
+header h1{
+    color: #001433;
+    margin-top: 10px;
+}
+
+main{
+    background-color: aquamarine;
+    height: calc(100vh - 142px);
+    overflow: auto;
+}
+
+div.grid{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+div.square-easy{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: 1px solid black;
+    cursor: crosshair;
+}
+
+div.square-normal{
+    width: calc(100% / 8);
+    height: calc(100% / 8);
+    border: 1px solid black;
+    cursor: crosshair;
+}
+
+div.square-hard{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+    cursor: crosshair;
+}
+
+div.active{
+    background-color: #0D6EFD;
+}
