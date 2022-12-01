@@ -1,9 +1,9 @@
 // Consegna
 // ! Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 // ! Attenzione: Nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
-// todo In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
-// todo Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-// todo La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+// ! In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
+// ? Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+// ! La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 // todo Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 // ?Consigli del giorno:
 // ?Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi. Ad esempio: Di cosa ho bisogno per generare i numeri?
@@ -64,10 +64,12 @@ buttonMidElement.addEventListener('click', function(){
 
 buttonHardElement.addEventListener('click', function(){
     gridElement.innerHTML = "";
-    asideElement.innerHTML="";
+    asideElement.innerHTML= "";
+
     let pointCounter = 0;
     const counterElement = getNewElement(asideElement,'p')
     let gameOver = false;
+
     const bombList = [];
     while (bombList.length < 16) {
         let randomicNumber = getRandomNumber(1, 100);
@@ -76,6 +78,7 @@ buttonHardElement.addEventListener('click', function(){
         }
     }
     console.warn('Le bombe sono nella posizione: ' + bombList);
+
     for (let index = 1; index <= 100; index++) {
         let newSquare = getNewElement(gridElement, 'div');
         newSquare.classList.add('d-flex', 'square-hard');
@@ -92,10 +95,11 @@ buttonHardElement.addEventListener('click', function(){
             
             if (!gameOver){
                 pointCounter++;
-                counterElement.innerHTML= pointCounter;
+                counterElement.innerHTML= `PUNTI: ${pointCounter}`;
+                
                 if (pointCounter == 100 - bombList.length) {
-                    alert('You Lose!');
                     gameOver = true;
+                    alert('CONTRATULATION! You win!');
                 }
             }
 
